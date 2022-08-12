@@ -1,0 +1,75 @@
+@import "variables";
+
+@mixin box_shadow() {
+    border-radius: 10px;
+    box-shadow: 0 20px 15px 0 rgba(0, 0, 0, 0.4);
+    border: solid 0.5px #3b3531;
+    background-color: #1a1a1e;
+}
+
+@mixin font($size, $color) {
+    font-family: Roboto;
+    font-size: $size;
+    color: $color;
+
+    @media (max-width: 320px) {
+        font-size: $size * 0.8;
+    }
+}
+
+@mixin fontRegular($size, $color) {
+    font-family: "regular";
+    font-size: $size;
+    color: $color;
+
+    @media (max-width: 320px) {
+        font-size: $size * 0.8;
+    }
+}
+
+@mixin fontBold($size, $color) {
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: $size;
+    color: $color;
+
+    @media (max-width: 320px) {
+        font-size: $size * 0.8;
+    }
+}
+
+@mixin fontLight($size, $color) {
+    font-family: Roboto;
+    font-weight: lighter;
+    font-size: $size;
+    color: $color;
+
+    @media (max-width: 320px) {
+        font-size: $size * 0.8;
+    }
+}
+
+@mixin container() {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    @media (max-width: $mobile-size) {
+        width: calc(100% - 40px);
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@mixin container1() {
+    @include container();
+    width: calc(100% - 40px);
+    max-width: $width-pc1;
+    position: relative;
+}
+
+@mixin container2() {
+    @include container();
+    width: $width-pc2;
+}

@@ -1,0 +1,53 @@
+@import "mixins";
+@import "variables";
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100vw;
+    height: $header-pc;
+    background-color: #5f3dc4;
+
+    z-index: 1000000;
+
+    .menu_btn {
+        width: 24px;
+        height: 20px;
+        background-image: url("/Assets/Images/btn_menu.svg");
+        margin-left: 25px;
+    }
+    .title {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .icon {
+            width: 17px;
+            height: 26px;
+            background-image: url("/Assets/Images/logo.svg");
+            background-size: cover;
+            margin-right: 5px;
+        }
+        .text {
+            font-size: 25px;
+            color: #ffffff;
+            font-weight: bold;
+        }
+    }
+    .app_btn {
+        width: 60px;
+        height: 30px;
+        background-color: #ffffff;
+        color: #5f3dc4;
+        font-size: 17px;
+        font-weight: bold;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 25px;
+    }
+}
