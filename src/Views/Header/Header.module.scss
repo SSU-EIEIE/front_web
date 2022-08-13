@@ -19,6 +19,9 @@
         height: 20px;
         background-image: url("/Assets/Images/btn_menu.svg");
         margin-left: 25px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
     }
     .title {
         display: flex;
