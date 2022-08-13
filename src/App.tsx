@@ -9,6 +9,7 @@ import {
 import ScrollToTop from "./Libs/ScrollToTop";
 import Header from "./Views/Header/Header";
 import Home from "./Views/Home/Home";
+import AppLink from "./Views/AppLink/AppLink";
 
 export const PATHS = {
     home: "/",
@@ -23,7 +24,7 @@ export default function App() {
         <Router>
             <ScrollToTop />
             <div className="app_container">
-                {currentPath.includes("/games/") ? <div /> : <Header />}
+                {currentPath.includes("/link") ? <div /> : <Header />}
                 <div className="bg_container">
                     <Switch>
                         <Route
@@ -34,15 +35,15 @@ export default function App() {
                                 return <Home {...props} />;
                             }}
                         />
+                        <Route
+                            exact
+                            path={PATHS.link}
+                            render={(props: any) => {
+                                setCurrentPath(PATHS.link);
+                                return <AppLink {...props} />;
+                            }}
+                        />
                         {/* <Route
-                                exact
-                                path={PATHS.link}
-                                render={(props: any) => {
-                                    setCurrentPath(PATHS.link);
-                                    return <AppLink {...props} />;
-                                }}
-                            />
-                             <Route
                                 exact
                                 path={PATHS.search}
                                 render={(props: any) => {

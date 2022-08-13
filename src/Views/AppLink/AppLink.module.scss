@@ -1,0 +1,45 @@
+@import "mixins";
+@import "variables";
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-color: #ffffff;
+    //TODO : 임시값
+
+    z-index: 1000000;
+    align-items: center;
+
+    .img_container {
+        width: 50%;
+        height: 100vh;
+        display: flex;
+        background-image: url("/Assets/Images/link_banner.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: column;
+
+        .text {
+            white-space: pre-line;
+            text-align: center;
+        }
+        .button {
+            width: 245px;
+            height: 55px;
+            background-color: #5f3dc4;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 30px;
+        }
+    }
+}

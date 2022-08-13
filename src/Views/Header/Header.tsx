@@ -1,3 +1,4 @@
+import { PATHS } from "../../App";
 import style from "./Header.module.scss";
 export default function Header() {
     return (
@@ -7,7 +8,14 @@ export default function Header() {
                 <div className={style.icon} />
                 <div className={style.text}>{"WHEEL SAFE"}</div>
             </div>
-            <div className={style.app_btn}>{"APP"}</div>
+            <div
+                className={style.app_btn}
+                onClick={() => {
+                    window.open(PATHS.link, "_self");
+                }}
+            >
+                {"APP"}
+            </div>
         </div>
     );
 }
