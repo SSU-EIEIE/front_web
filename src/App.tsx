@@ -16,6 +16,8 @@ export const PATHS = {
     link: "/link",
     search: "/search",
     detail: "/detail",
+    report: "/report",
+    setting: "/setting",
 };
 
 export default function App() {

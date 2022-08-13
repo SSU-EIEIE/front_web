@@ -12,7 +12,7 @@
     height: $header-pc;
     background-color: #5f3dc4;
 
-    z-index: 1000000;
+    z-index: 10;
 
     .menu_btn {
         width: 24px;
@@ -22,6 +22,7 @@
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
+        cursor: pointer;
     }
     .title {
         display: flex;
