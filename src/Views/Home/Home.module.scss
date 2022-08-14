@@ -12,11 +12,11 @@
     background-color: #ffffff;
     //TODO : 임시값
 
-    @media (max-width: $width-pc1) {
-        height: $header-mobile;
-        box-shadow: 0;
-        background-color: transparent;
-    }
+    // @media (max-width: $width-pc1) {
+    //     height: $header-mobile;
+    //     box-shadow: 0;
+    //     background-color: transparent;
+    // }
 
     .search_container {
         width: 100%;
@@ -25,5 +25,10 @@
         background-color: #ffffff;
         align-items: center;
         justify-content: center;
+    }
+    .map_container {
+        width: 100%;
+        height: calc(100% - 50px);
+        background-color: bisque;
     }
 }
