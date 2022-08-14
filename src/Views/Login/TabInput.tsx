@@ -8,7 +8,7 @@ export default function TabInput() {
                 <Input placeHolder={"id@example.com"} />
             </div>
             <div className={style.pw_container}>
-                <Input placeHolder={"password"} />
+                <Input placeHolder={"password"} type={"password"} />
             </div>
             <div className={style.button}></div>
         </div>
