@@ -10,6 +10,7 @@ import ScrollToTop from "./Libs/ScrollToTop";
 import Header from "./Views/Header/Header";
 import Home from "./Views/Home/Home";
 import AppLink from "./Views/AppLink/AppLink";
+import Login from "./Views/Login/Login";
 
 export const PATHS = {
     home: "/",
@@ -18,6 +19,7 @@ export const PATHS = {
     detail: "/detail",
     report: "/report",
     setting: "/setting",
+    login: "/login",
 };
 
 export default function App() {
@@ -26,7 +28,12 @@ export default function App() {
         <Router>
             <ScrollToTop />
             <div className="app_container">
-                {currentPath.includes("/link") ? <div /> : <Header />}
+                {currentPath.includes("/link") ||
+                currentPath.includes("/login") ? (
+                    <div />
+                ) : (
+                    <Header />
+                )}
                 <div className="bg_container">
                     <Switch>
                         <Route
@@ -43,6 +50,14 @@ export default function App() {
                             render={(props: any) => {
                                 setCurrentPath(PATHS.link);
                                 return <AppLink {...props} />;
+                            }}
+                        />
+                        <Route
+                            exact
+                            path={PATHS.login}
+                            render={(props: any) => {
+                                setCurrentPath(PATHS.login);
+                                return <Login {...props} />;
                             }}
                         />
                         {/* <Route
