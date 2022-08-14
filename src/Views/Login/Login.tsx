@@ -33,7 +33,11 @@ export default function Login() {
                     />
                 </div>
                 <div className={style.tab_bottom}>
-                    {tabIndex === 0 ? <TabInput /> : <TabInput />}
+                    {tabIndex === 0 ? (
+                        <TabInput type="SignUp" />
+                    ) : (
+                        <TabInput type="LogIn" />
+                    )}
                 </div>
             </div>
         </div>
