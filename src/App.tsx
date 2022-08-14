@@ -11,6 +11,7 @@ import Header from "./Views/Header/Header";
 import Home from "./Views/Home/Home";
 import AppLink from "./Views/AppLink/AppLink";
 import Login from "./Views/Login/Login";
+import Report from "./Views/Report/Report";
 
 export const PATHS = {
     home: "/",
@@ -58,6 +59,14 @@ export default function App() {
                             render={(props: any) => {
                                 setCurrentPath(PATHS.login);
                                 return <Login {...props} />;
+                            }}
+                        />
+                        <Route
+                            exact
+                            path={PATHS.report}
+                            render={(props: any) => {
+                                setCurrentPath(PATHS.report);
+                                return <Report {...props} />;
                             }}
                         />
                         {/* <Route

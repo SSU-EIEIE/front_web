@@ -1,0 +1,54 @@
+@import "mixins";
+@import "variables";
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    width: calc(100% - 18px);
+    height: 100%;
+    background-color: transparent;
+
+    input {
+        border: 0px solid transparent;
+        background-color: transparent;
+        height: 100%;
+        width: 100%;
+        margin-left: 20px;
+        margin-right: 20px;
+        font-family: "Roboto";
+        font-size: 15px;
+        font-weight: 600;
+    }
+    input:focus {
+        outline: none;
+    }
+    input::placeholder {
+        color: #c8c7cc;
+    }
+    input::-ms-clear,
+    input::-ms-reveal {
+        display: none;
+        width: 0;
+        height: 0;
+    }
+    input::-webkit-search-decoration,
+    input::-webkit-search-cancel-button,
+    input::-webkit-search-results-button,
+    input::-webkit-search-results-decoration {
+        display: none;
+    }
+
+    .button {
+        width: 18px;
+        height: 18px;
+        background-image: url("/Assets/Images/close-circled.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer;
+    }
+}

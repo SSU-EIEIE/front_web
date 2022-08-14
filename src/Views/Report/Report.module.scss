@@ -1,0 +1,28 @@
+@import "mixins";
+@import "variables";
+
+.container {
+    width: 40%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 70px;
+}
+
+.input_container {
+    .input_label {
+        font-weight: 400;
+        font-size: 13px;
+        color: #000000;
+        margin-top: 8px;
+    }
+    .input_component_container {
+        width: 100%;
+        min-width: 345px;
+        height: $header-pc;
+        border-radius: 8px;
+        border: 1px solid #efeff4;
+        margin-top: 8px;
+    }
+}
