@@ -1,20 +1,27 @@
+import { useState } from "react";
 import Input from "../Input/Input";
 import style from "./Report.module.scss";
 
 export default function Report() {
+    const [place, setPlace] = useState("");
+    const [address, setAddress] = useState("");
+    const [script, setScript] = useState("");
     return (
         <div className={style.container}>
             <InputArea
                 title={"위험한 장소 명"}
                 placeHolder={"예시) 상도주민센터 앞 횡단보도"}
+                getValue={setPlace}
             />
             <InputArea
                 title={"주소"}
                 placeHolder={"예시) 서울 동작구 상도로 53길 9"}
+                getValue={setAddress}
             />
             <InputArea
                 title={"상세 설명"}
                 placeHolder={"예시) 횡단보도 공사 중"}
+                getValue={setScript}
             />
 
             {/* TODO : 사진 업로드 추가 개발 */}
@@ -31,12 +38,19 @@ export default function Report() {
     );
 }
 
-function InputArea(props: { title: string; placeHolder: string }) {
+function InputArea(props: {
+    title: string;
+    placeHolder: string;
+    getValue: (value: string) => void;
+}) {
     return (
         <div className={style.input_container}>
             <div className={style.input_label}>{props.title}</div>
             <div className={style.input_component_container}>
-                <Input placeHolder={props.placeHolder} />
+                <Input
+                    placeHolder={props.placeHolder}
+                    onChanged={props.getValue}
+                />
             </div>
         </div>
     );
