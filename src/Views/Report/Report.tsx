@@ -16,6 +16,17 @@ export default function Report() {
                 title={"상세 설명"}
                 placeHolder={"예시) 횡단보도 공사 중"}
             />
+
+            {/* TODO : 사진 업로드 추가 개발 */}
+            <div className={style.photo_container}>
+                <div className={style.label}>{"사진"}</div>
+                <div className={style.button}>{"사진 선택"}</div>
+                <div className={style.photo_component_container}>
+                    <div className={style.not_photo_component}>
+                        {"사진 업로드"}
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
