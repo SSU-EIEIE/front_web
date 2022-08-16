@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Cookies } from "react-cookie";
 import { Link } from "react-router-dom";
 import { PATHS } from "../../App";
 import style from "./SideBar.module.scss";
@@ -9,9 +10,13 @@ export default function SideBar(props: {
     const menuList = [
         { name: "제보하기", path: PATHS.report },
         { name: "설정", path: PATHS.setting },
-        { name: "로그아웃", path: PATHS.home },
+        { name: "로그아웃", path: PATHS.logout },
     ];
-    const [isLogIn, setIsLogIn] = useState(false);
+    const cookies = new Cookies();
+    useEffect(() => {
+        setUser(cookies.get("email"));
+    }, []);
+    const [user, setUser] = useState(false);
     return (
         <div className={style.container}>
             <div className={style.side_bar_container}>
@@ -25,10 +30,8 @@ export default function SideBar(props: {
                         />
                     </div>
                     <div className={style.user_id_container}>
-                        {isLogIn ? (
-                            <div className={style.user_text}>
-                                {"testID@gmail.com"}
-                            </div>
+                        {user ? (
+                            <div className={style.user_text}>{user}</div>
                         ) : (
                             <div
                                 className={style.login_btn}

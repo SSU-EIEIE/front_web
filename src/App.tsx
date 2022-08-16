@@ -12,6 +12,7 @@ import Home from "./Views/Home/Home";
 import AppLink from "./Views/AppLink/AppLink";
 import Login from "./Views/Login/Login";
 import Report from "./Views/Report/Report";
+import Logout from "./Views/Login/Logout";
 
 export const PATHS = {
     home: "/",
@@ -21,6 +22,7 @@ export const PATHS = {
     report: "/report",
     setting: "/setting",
     login: "/login",
+    logout: "/logout",
 };
 
 export default function App() {
@@ -67,6 +69,14 @@ export default function App() {
                             render={(props: any) => {
                                 setCurrentPath(PATHS.report);
                                 return <Report {...props} />;
+                            }}
+                        />
+                        <Route
+                            exact
+                            path={PATHS.logout}
+                            render={(props: any) => {
+                                setCurrentPath(PATHS.logout);
+                                return <Logout />;
                             }}
                         />
                         {/* <Route
