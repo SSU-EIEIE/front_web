@@ -13,6 +13,7 @@ import AppLink from "./Views/AppLink/AppLink";
 import Login from "./Views/Login/Login";
 import Report from "./Views/Report/Report";
 import Logout from "./Views/Login/Logout";
+import Search from "./Views/Search/Search";
 
 export const PATHS = {
     home: "/",
@@ -79,14 +80,16 @@ export default function App() {
                                 return <Logout />;
                             }}
                         />
-                        {/* <Route
-                                exact
-                                path={PATHS.search}
-                                render={(props: any) => {
-                                    setCurrentPath(PATHS.search);
-                                    return <Search {...props} />;
-                                }}
-                            />
+
+                        <Route
+                            exact
+                            path={PATHS.search}
+                            render={(props: any) => {
+                                setCurrentPath(PATHS.search);
+                                return <Search {...props} />;
+                            }}
+                        />
+                        {/* 
                              <Route
                                 exact
                                 path={PATHS.detail}
