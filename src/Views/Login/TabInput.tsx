@@ -53,11 +53,11 @@ export default function TabInput(props: { type: "SignUp" | "LogIn" }) {
     return (
         <div className={style.container}>
             <div className={style.id_container}>
-                <Input placeHolder={"id@example.com"} onChanged={setEmail} />
+                <Input placeHolder={"ID"} onChanged={setEmail} />
             </div>
             <div className={style.pw_container}>
                 <Input
-                    placeHolder={"password"}
+                    placeHolder={"Password"}
                     type={"password"}
                     onChanged={setPassword}
                 />

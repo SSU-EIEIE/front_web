@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Input from "../Input/Input";
 import style from "./Report.module.scss";
 
@@ -6,6 +6,21 @@ export default function Report() {
     const [place, setPlace] = useState("");
     const [address, setAddress] = useState("");
     const [script, setScript] = useState("");
+
+    const [imageSrc, setImageSrc] = useState("");
+    const fileInputRef = useRef<HTMLInputElement>(null);
+
+    const encodeFileToBase64 = (fileBlob: Blob) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(fileBlob);
+        return new Promise<void>((resolve) => {
+            reader.onload = () => {
+                setImageSrc(reader.result as string);
+                resolve();
+            };
+        });
+    };
+
     return (
         <div className={style.container}>
             <InputArea
@@ -27,12 +42,35 @@ export default function Report() {
             {/* TODO : 사진 업로드 추가 개발 */}
             <div className={style.photo_container}>
                 <div className={style.label}>{"사진"}</div>
-                <div className={style.button}>{"사진 선택"}</div>
-                <div className={style.photo_component_container}>
-                    <div className={style.not_photo_component}>
-                        {"사진 업로드"}
-                    </div>
+                <div
+                    className={style.button}
+                    onClick={(event) => {
+                        event.preventDefault();
+                        fileInputRef.current?.click();
+                    }}
+                >
+                    {"사진 선택"}
                 </div>
+                <input
+                    type="file"
+                    style={{ display: "none" }}
+                    ref={fileInputRef}
+                    onChange={(e) => {
+                        if (e.target.files) {
+                            encodeFileToBase64(e.target.files[0]);
+                        }
+                    }}
+                />
+                <div className={style.preview}>
+                    {imageSrc && (
+                        <img
+                            className={style.img}
+                            src={imageSrc}
+                            alt="preview-img"
+                        />
+                    )}
+                </div>
+                <div className={style.send_button}>{"제보 전송"}</div>
             </div>
         </div>
     );
