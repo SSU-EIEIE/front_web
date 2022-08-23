@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PATHS } from "../../App";
 import Input from "../Input/Input";
 import style from "./Search.module.scss";
-export default function Search() {
+
+const { kakao } = window;
+
+export default function SearchResult(props: any) {
     const [address, setAddress] = useState("");
 
     const enter = () => {
@@ -12,6 +15,18 @@ export default function Search() {
             console.log(address);
         }
     };
+
+    useEffect(() => {
+        var ps = new kakao.maps.services.Places();
+        ps.keywordSearch(props.match.params.searchString, placesSearchCB);
+    }, []);
+
+    function placesSearchCB(data: any, status: any, pagination: any) {
+        console.log(data);
+        console.log(status);
+        console.log(pagination);
+    }
+
     return (
         <div className={style.container}>
             <div className={style.search_container}>
@@ -23,21 +38,7 @@ export default function Search() {
                     />
                 </div>
             </div>
-            <div className={style.list_container}>
-                <ChargerContainer />
-                <div className={style.record_title}>{"최근검색"}</div>
-                {/* 검색기록 리스트 */}
-            </div>
-        </div>
-    );
-}
-
-function ChargerContainer() {
-    return (
-        <div className={style.charger_container}>
-            <div className={style.icon} />
-            <div className={style.text}>{"가까운 충전소 찾기"}</div>
-            {/* TODO : 충전소 onClick 추가 */}
+            <div className={style.list_container}>{/* 검색기록 리스트 */}</div>
         </div>
     );
 }

@@ -14,11 +14,13 @@ import Login from "./Views/Login/Login";
 import Report from "./Views/Report/Report";
 import Logout from "./Views/Login/Logout";
 import Search from "./Views/Search/Search";
+import SearchResult from "./Views/Search/SearchResult";
 
 export const PATHS = {
     home: "/",
     link: "/link",
     search: "/search",
+    searchStr: "/search/",
     detail: "/detail",
     report: "/report",
     setting: "/setting",
@@ -94,6 +96,14 @@ export default function App() {
                             render={(props: any) => {
                                 setCurrentPath(PATHS.search);
                                 return <Search {...props} />;
+                            }}
+                        />
+                        <Route
+                            exact
+                            path={PATHS.searchStr + ":searchString"}
+                            render={(props: any) => {
+                                setCurrentPath(PATHS.searchStr);
+                                return <SearchResult {...props} />;
                             }}
                         />
                         {/* 

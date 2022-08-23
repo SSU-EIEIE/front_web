@@ -5,6 +5,7 @@ export default function Input(props: {
     placeHolder: string;
     type?: string;
     onChanged: (value: string) => void;
+    enterPress?: () => void;
 }) {
     const [inputValue, setInputValue] = useState("");
     return (
@@ -17,6 +18,11 @@ export default function Input(props: {
                 onChange={(e) => {
                     setInputValue(e.target.value);
                     props.onChanged(e.target.value);
+                }}
+                onKeyPress={(e) => {
+                    if (e.key === "Enter" && props.enterPress) {
+                        props.enterPress();
+                    }
                 }}
             ></input>
             {inputValue ? (
