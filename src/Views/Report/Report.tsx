@@ -39,7 +39,6 @@ export default function Report() {
                 getValue={setScript}
             />
 
-            {/* TODO : 사진 업로드 추가 개발 */}
             <div className={style.photo_container}>
                 <div className={style.label}>{"사진"}</div>
                 <div
