@@ -7,6 +7,7 @@ const { kakao } = window;
 
 export default function SearchResult(props: any) {
     const [address, setAddress] = useState("");
+    const [data, setData] = useState<any>("");
 
     const enter = () => {
         if (address) {
@@ -22,9 +23,12 @@ export default function SearchResult(props: any) {
     }, []);
 
     function placesSearchCB(data: any, status: any, pagination: any) {
-        console.log(data);
-        console.log(status);
-        console.log(pagination);
+        if (status === kakao.maps.services.Status.OK) {
+            setData(data);
+            console.log(data);
+            console.log(status);
+            console.log(pagination);
+        }
     }
 
     return (
@@ -38,7 +42,22 @@ export default function SearchResult(props: any) {
                     />
                 </div>
             </div>
-            <div className={style.list_container}>{/* 검색기록 리스트 */}</div>
+            <div className={style.list_container}>
+                {data ? (
+                    data.map((item: any) => {
+                        return (
+                            <div>
+                                <div>{JSON.stringify(item.place_name)}</div>
+                                <div>
+                                    {JSON.stringify(item.road_address_name)}
+                                </div>
+                            </div>
+                        );
+                    })
+                ) : (
+                    <div />
+                )}
+            </div>
         </div>
     );
 }
