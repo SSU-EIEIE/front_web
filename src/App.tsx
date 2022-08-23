@@ -26,6 +26,13 @@ export const PATHS = {
     logout: "/logout",
 };
 
+declare global {
+    interface Window {
+        Tmapv2: any;
+        kakao: any;
+    }
+}
+
 export default function App() {
     const [currentPath, setCurrentPath] = useState(window.location.pathname);
     return (
