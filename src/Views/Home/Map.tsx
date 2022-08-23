@@ -24,11 +24,9 @@ const Map: FC = () => {
 
                 let markerImg = img;
                 let imageSize = new kakao.maps.Size(50, 50);
-                // let imageOption = { offset: new kakao.maps.Point(27, 69) };
                 let markerImage = new kakao.maps.MarkerImage(
                     markerImg,
                     imageSize
-                    // imageOption
                 );
 
                 let markerPosition = new kakao.maps.LatLng(lat, lon);
