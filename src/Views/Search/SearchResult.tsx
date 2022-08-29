@@ -49,8 +49,10 @@ export default function SearchResult(props: any) {
                             <div
                                 className={style.list_item}
                                 onClick={() => {
-                                    console.log(
-                                        JSON.stringify(item.place_name)
+                                    window.open(
+                                        PATHS.detail +
+                                            JSON.stringify(item.place_name),
+                                        "_self"
                                     );
                                 }}
                             >

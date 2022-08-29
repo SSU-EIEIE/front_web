@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import useCurrentLocation from "../../Libs/useCurrentPostion";
 import SearchBar from "../SearchBar/SearchBar";
 import style from "./Home.module.scss";
 import Map from "./Map";

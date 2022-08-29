@@ -15,13 +15,14 @@ import Report from "./Views/Report/Report";
 import Logout from "./Views/Login/Logout";
 import Search from "./Views/Search/Search";
 import SearchResult from "./Views/Search/SearchResult";
+import Detail from "./Views/Detail/Detail";
 
 export const PATHS = {
     home: "/",
     link: "/link",
     search: "/search",
     searchStr: "/search/",
-    detail: "/detail",
+    detail: "/detail/",
     report: "/report",
     setting: "/setting",
     login: "/login",
@@ -106,15 +107,15 @@ export default function App() {
                                 return <SearchResult {...props} />;
                             }}
                         />
-                        {/* 
-                             <Route
-                                exact
-                                path={PATHS.detail}
-                                render={(props: any) => {
-                                    setCurrentPath(PATHS.detail);
-                                    return <DetailRoot {...props} />;
-                                }}
-                            /> */}
+
+                        <Route
+                            exact
+                            path={PATHS.detail + ":searchString"}
+                            render={(props: any) => {
+                                setCurrentPath(PATHS.detail);
+                                return <Detail {...props} />;
+                            }}
+                        />
 
                         <Redirect from="/*" to={PATHS.home} />
                     </Switch>

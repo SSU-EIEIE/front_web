@@ -1,0 +1,69 @@
+@import "mixins";
+@import "variables";
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .start_container {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        width: 40%;
+        min-width: 345px;
+        height: $header-pc;
+        background-color: #f2f3f5;
+        border-radius: 7px;
+
+        .text {
+            font-family: "Roboto";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 17px;
+            line-height: 20px;
+
+            color: #242e42;
+
+            margin-left: 9px;
+        }
+    }
+    .change_btn {
+        width: 21px;
+        height: 21px;
+        margin-left: 21px;
+        margin-right: 21px;
+        background-image: url("/Assets/Images/btn_change.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    .end_container {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        width: 40%;
+        min-width: 345px;
+        height: $header-pc;
+        background-color: #f2f3f5;
+        border-radius: 7px;
+
+        .text {
+            font-family: "Roboto";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 17px;
+            line-height: 20px;
+
+            color: #242e42;
+
+            margin-left: 9px;
+        }
+    }
+}
