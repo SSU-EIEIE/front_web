@@ -46,10 +46,24 @@ export default function SearchResult(props: any) {
                 {data ? (
                     data.map((item: any) => {
                         return (
-                            <div>
-                                <div>{JSON.stringify(item.place_name)}</div>
-                                <div>
-                                    {JSON.stringify(item.road_address_name)}
+                            <div
+                                className={style.list_item}
+                                onClick={() => {
+                                    console.log(
+                                        JSON.stringify(item.place_name)
+                                    );
+                                }}
+                            >
+                                <div className={style.place_name}>
+                                    {JSON.stringify(item.place_name).replaceAll(
+                                        '"',
+                                        ""
+                                    )}
+                                </div>
+                                <div className={style.place_address}>
+                                    {JSON.stringify(
+                                        item.road_address_name
+                                    ).replaceAll('"', "")}
                                 </div>
                             </div>
                         );

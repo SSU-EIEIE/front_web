@@ -48,6 +48,35 @@
             color: #c8c7cc;
             margin: 30px 0 30px 25px;
         }
+
+        .list_item {
+            border-bottom: 1px solid #c8c7cc;
+
+            cursor: pointer;
+
+            .place_name {
+                font-family: "Roboto";
+                font-style: normal;
+                font-weight: 500;
+                font-size: 17px;
+                line-height: 20px;
+
+                color: #242e42;
+
+                margin: 8px 0px 11px 42px;
+            }
+            .place_address {
+                font-family: "Roboto";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 15px;
+                line-height: 18px;
+
+                color: #000000;
+
+                margin: 0px 0px 8px 42px;
+            }
+        }
     }
 }
 
