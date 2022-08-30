@@ -51,7 +51,11 @@ export default function SearchResult(props: any) {
                                 onClick={() => {
                                     window.open(
                                         PATHS.detail +
-                                            JSON.stringify(item.place_name),
+                                            JSON.stringify(item.place_name) +
+                                            "&" +
+                                            JSON.stringify(item.x) +
+                                            "&" +
+                                            JSON.stringify(item.y),
                                         "_self"
                                     );
                                 }}
