@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { getLineString } from "../../Libs/api";
 import Map from "../Home/Map";
 import DetailSearchBar from "../SearchBar/DetailSearchBar";
 import style from "./Detail.module.scss";
@@ -13,6 +14,8 @@ export default function Detail(props: any) {
     const [fromLat, setFromLat] = useState<string | undefined>(undefined);
     const [toLon, setToLon] = useState<string | undefined>(undefined);
     const [toLat, setToLat] = useState<string | undefined>(undefined);
+
+    const [pathArr, setpathArr] = useState([]);
 
     //lon : x
     //lat : y
@@ -77,28 +80,18 @@ export default function Detail(props: any) {
 
     useEffect(() => {
         if (fromLon && fromLat && toLon && toLat) {
-            console.log(fromLon, fromLat, toLon, toLat);
-            // axios
-            //     .get("users/poisearch", {
-            //         params: {
-            //             fromLon: fromLon,
-            //             fromLat: fromLat,
-            //             toLon: toLon,
-            //             toLat: toLat,
-            //             startName: "start",
-            //             endName: "end",
-            //         },
-            //         baseURL: "http://18.207.245.34:3000",
-            //     })
-            //     .then((r) => {
-            //         console.log(r);
-            //     })
-            //     .catch((e) => {
-            //         console.log(e);
-            //     });
             poiSearch(fromLon, fromLat, toLon, toLat)
                 .then((r) => {
                     console.log(r);
+                    // console.log(r.data.features);
+                    getLineString(r.data.features)
+                        .then((r) => {
+                            // console.log(r);
+                            setpathArr(r);
+                        })
+                        .catch((e) => {
+                            console.log(e);
+                        });
                 })
                 .catch((e) => {
                     console.log(e);
@@ -111,7 +104,7 @@ export default function Detail(props: any) {
             <div className={style.search_container}>
                 <DetailSearchBar start={current} end={placeName} />
             </div>
-            <Map />
+            <Map latlng={pathArr} />
             {/* map 에 디테일 루트 알려주는거 해야됨 */}
         </div>
     );
