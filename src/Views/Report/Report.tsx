@@ -69,7 +69,16 @@ export default function Report() {
                         />
                     )}
                 </div>
-                <div className={style.send_button}>{"제보 전송"}</div>
+                <div
+                    className={style.send_button}
+                    onClick={() => {
+                        alert(
+                            "🚨 제보가 완료되었습니다. 🚨\n 안전한 경로를 위해 빠른 검토 후, 반영하겠습니다."
+                        );
+                    }}
+                >
+                    {"제보 전송"}
+                </div>
             </div>
         </div>
     );
