@@ -83,10 +83,8 @@ export default function Detail(props: any) {
             poiSearch(fromLon, fromLat, toLon, toLat)
                 .then((r) => {
                     console.log(r);
-                    // console.log(r.data.features);
                     getLineString(r.data.features)
                         .then((r) => {
-                            // console.log(r);
                             setpathArr(r);
                         })
                         .catch((e) => {
@@ -105,7 +103,6 @@ export default function Detail(props: any) {
                 <DetailSearchBar start={current} end={placeName} />
             </div>
             <Map latlng={pathArr} />
-            {/* map 에 디테일 루트 알려주는거 해야됨 */}
         </div>
     );
 }

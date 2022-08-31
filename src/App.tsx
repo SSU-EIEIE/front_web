@@ -16,12 +16,14 @@ import Logout from "./Views/Login/Logout";
 import Search from "./Views/Search/Search";
 import SearchResult from "./Views/Search/SearchResult";
 import Detail from "./Views/Detail/Detail";
+import SearchElectric from "./Views/Search/SearchElectric";
 
 export const PATHS = {
     home: "/",
     link: "/link",
     search: "/search",
     searchStr: "/search/",
+    searchElec: "/searchElec/",
     detail: "/detail/",
     report: "/report",
     setting: "/setting",
@@ -105,6 +107,15 @@ export default function App() {
                             render={(props: any) => {
                                 setCurrentPath(PATHS.searchStr);
                                 return <SearchResult {...props} />;
+                            }}
+                        />
+
+                        <Route
+                            exact
+                            path={PATHS.searchElec + ":searchString"}
+                            render={(props: any) => {
+                                setCurrentPath(PATHS.searchElec);
+                                return <SearchElectric {...props} />;
                             }}
                         />
 

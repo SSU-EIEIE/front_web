@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { PATHS } from "../../App";
 import Input from "../Input/Input";
@@ -5,7 +6,7 @@ import style from "./Search.module.scss";
 
 const { kakao } = window;
 
-export default function SearchResult(props: any) {
+export default function SearchElectric(props: any) {
     const [address, setAddress] = useState("");
     const [data, setData] = useState<any>("");
 
@@ -18,17 +19,29 @@ export default function SearchResult(props: any) {
     };
 
     useEffect(() => {
-        var ps = new kakao.maps.services.Places();
-        ps.keywordSearch(props.match.params.searchString, placesSearchCB);
-    }, []);
+        console.log(props.match.params.searchString);
+        let lon = props.match.params.searchString.split("&")[0];
+        let lat = props.match.params.searchString.split("&")[1];
+        electricSearch(lon, lat)
+            .then((r) => {
+                console.log(r.data.response.body.items);
+                setData(r.data.response.body.items);
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+    }, [props]);
 
-    function placesSearchCB(data: any, status: any, pagination: any) {
-        if (status === kakao.maps.services.Status.OK) {
-            setData(data);
-            console.log(data);
-            console.log(status);
-            console.log(pagination);
-        }
+    async function electricSearch(lon: string, lat: string) {
+        const response = await axios.get("users/electric", {
+            params: {
+                lon: lon,
+                lat: lat,
+            },
+            baseURL: "http://18.207.245.34:3000",
+        });
+
+        return response;
     }
 
     return (
@@ -39,7 +52,7 @@ export default function SearchResult(props: any) {
                         placeHolder={"지도 검색"}
                         onChanged={setAddress}
                         enterPress={enter}
-                        text={props.match.params.searchString}
+                        text={"가까운 충전소"}
                     />
                 </div>
             </div>
@@ -52,25 +65,26 @@ export default function SearchResult(props: any) {
                                 onClick={() => {
                                     window.open(
                                         PATHS.detail +
-                                            JSON.stringify(item.place_name) +
+                                            JSON.stringify(item.fcltyNm) +
                                             "&" +
-                                            JSON.stringify(item.x) +
+                                            JSON.stringify(item.longitude) +
                                             "&" +
-                                            JSON.stringify(item.y),
+                                            JSON.stringify(item.latitude),
                                         "_self"
                                     );
                                 }}
                             >
                                 <div className={style.place_name}>
-                                    {JSON.stringify(item.place_name).replaceAll(
+                                    {JSON.stringify(item.fcltyNm).replaceAll(
                                         '"',
                                         ""
                                     )}
                                 </div>
                                 <div className={style.place_address}>
-                                    {JSON.stringify(
-                                        item.road_address_name
-                                    ).replaceAll('"', "")}
+                                    {JSON.stringify(item.rdnmadr).replaceAll(
+                                        '"',
+                                        ""
+                                    )}
                                 </div>
                             </div>
                         );

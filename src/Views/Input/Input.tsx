@@ -1,13 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import style from "./Input.module.scss";
 
 export default function Input(props: {
     placeHolder: string;
+    text?: string;
     type?: string;
     onChanged: (value: string) => void;
     enterPress?: () => void;
 }) {
     const [inputValue, setInputValue] = useState("");
+
+    useEffect(() => {
+        if (props.text) {
+            setInputValue(props.text);
+        }
+    }, [props.text]);
     return (
         <div className={style.container}>
             <input
