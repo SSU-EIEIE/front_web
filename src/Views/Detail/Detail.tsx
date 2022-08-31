@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { getLineString } from "../../Libs/api";
+import { getLineString, getTotalDistance, getTotalTime } from "../../Libs/api";
 import Map from "../Home/Map";
 import DetailSearchBar from "../SearchBar/DetailSearchBar";
 import style from "./Detail.module.scss";
@@ -16,6 +16,9 @@ export default function Detail(props: any) {
     const [toLat, setToLat] = useState<string | undefined>(undefined);
 
     const [pathArr, setpathArr] = useState([]);
+
+    const [totalTime, setTotalTime] = useState(0);
+    const [totalDis, setTotalDis] = useState(0);
 
     //lon : x
     //lat : y
@@ -90,6 +93,23 @@ export default function Detail(props: any) {
                         .catch((e) => {
                             console.log(e);
                         });
+                    getTotalTime(r.data.features)
+                        .then((r) => {
+                            let m = r / 60;
+                            setTotalTime(Math.ceil(m));
+                            console.log(r);
+                        })
+                        .catch((e) => {
+                            console.log(e);
+                        });
+                    getTotalDistance(r.data.features)
+                        .then((r) => {
+                            setTotalDis(r);
+                            console.log(r);
+                        })
+                        .catch((e) => {
+                            console.log(e);
+                        });
                 })
                 .catch((e) => {
                     console.log(e);
@@ -103,6 +123,16 @@ export default function Detail(props: any) {
                 <DetailSearchBar start={current} end={placeName} />
             </div>
             <Map latlng={pathArr} />
+            <div className={style.time_container}>
+                <div className={style.circle} />
+                <div className={style.text_container}>
+                    <div className={style.title}>{"안전경로"}</div>
+                    <div className={style.total_container}>
+                        <div className={style.time_text}>{totalTime}분</div>
+                        <div className={style.distance_text}>{totalDis}m</div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

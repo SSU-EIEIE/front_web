@@ -6,8 +6,6 @@ import endPin from "../../Assets/Images/ic_Pin.svg";
 const { kakao } = window;
 
 export default function Map(props: { latlng?: any[] }) {
-    // const [linePath, setLinePath] = useState([]);
-
     function currentLocation() {
         // HTML5의 geolocation으로 사용할 수 있는지 확인합니다
 
@@ -148,5 +146,3 @@ export default function Map(props: { latlng?: any[] }) {
         </div>
     );
 }
-
-// export default Map;

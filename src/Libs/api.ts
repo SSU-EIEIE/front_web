@@ -27,3 +27,31 @@ export async function getLineString(features: ResponseData[]) {
 
     return pushArr;
 }
+
+export async function getTotalTime(features: ResponseData[]) {
+    let time = 0;
+
+    for (let i = 0; i < Object.keys(features).length; i++) {
+        if (features[i].properties.totalTime) {
+            time = features[i].properties.totalTime;
+
+            return time;
+        }
+    }
+
+    return time;
+}
+
+export async function getTotalDistance(features: ResponseData[]) {
+    let distance = 0;
+
+    for (let i = 0; i < Object.keys(features).length; i++) {
+        if (features[i].properties.totalTime) {
+            distance = features[i].properties.totalTime;
+
+            return distance;
+        }
+    }
+
+    return distance;
+}
